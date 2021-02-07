@@ -1,3 +1,9 @@
+
+const createElementWithClass = (element, className) => {
+  const createElement = document.createElement(element);
+  createElement.className = className;
+  return createElement;
+}
 const baseURL = "https://www.themealdb.com/api/json/v1/1/"
 const searchMealHandler = (e) => {
   e.preventDefault();
@@ -36,8 +42,7 @@ const createMeals = (meals) => {
       meal.addEventListener("click", ()=> {
         mealDetailsHandler(idMeal)
       })
-      const mealMedia = document.createElement('div');
-      mealMedia.className = "meal__media";
+      const mealMedia = createElementWithClass("div", "meal__media")
   
       const mealImg = document.createElement('img');
       mealImg.className = "meal__img";
