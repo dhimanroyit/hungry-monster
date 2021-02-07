@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+  display: inline-block;
+}
+img {
+  display: block;
+  width: 100%;
+}
+button {
+  border: none;
+  display: inline-block;
+}
+input {
+  display: block;
+  border: none;
+}
+input:focus,
+button:focus {
+  outline: none;
+}
+.container {
+  width: 1170px;
+  margin: 0 auto;
+}
+.header {
+  display: flex;
+  align-items: center;
+  height: 120px;
+}
+.logo {
+  width: 100px;
+}
+.nav {
+  margin-left: auto;
+}
+.nav__link {
+  padding: 10px 20px;
+}
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+#search__form {
+  display: flex;
+  border-radius: 5px;
+  overflow: hidden;
+}
+#search__input {
+  background-color: #F8F7F5;
+  padding: 20px 20px;
+  width: 400px;
+}
+.search__btn {
+  padding: 20px 30px;
+  background-color: #F06C4E;
+  color: #ffffff;
+  font-size: 18px;
+}
+#meals {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: repeat(4, 1fr );
+}
+
+.meal {
+  background-color: #F8F7F5;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.meal__img {
+  width: 100%;
+}
+.meal__title {
+  padding: 15px 10px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+  color: #252525;
+}
+
+#meal-details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.meal-details {
+  width: 400px;
+}
+.meal-details__media {
+  height: 250px;
+  overflow: hidden;
+  border-radius: 5px;
+}
+.meal-details__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.meal-details__title {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-transform: capitalize;
+  font-size: 25px;
+  color: #252525;
+  font-weight: 700;
+}
+.meal-details__ingredient-title {
+  font-size: 20px;
+  color: #252525;
+  padding-bottom: 18px;
+}
+.meal-details__ingredient {
+  list-style: none;
+}
+.meal-details__ingredient-item {
+  margin-bottom: 10px;
+}
+.meal-details__ingredient-item::before {
+  content: "\f058";
+  font-family: "Font Awesome 5 Free"; 
+  font-weight: 900; 
+  margin-right: 10px;
+  color: #F06C4E;;
+}
