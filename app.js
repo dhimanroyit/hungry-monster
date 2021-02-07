@@ -1,10 +1,12 @@
-
+// create element with class name
 const createElementWithClass = (element, className) => {
   const createElement = document.createElement(element);
   createElement.className = className;
   return createElement;
 }
+// base url
 const baseURL = "https://www.themealdb.com/api/json/v1/1/"
+// search data from server
 const searchMealHandler = (e) => {
   e.preventDefault();
   const searchInput = document.getElementById("search__input");
@@ -15,9 +17,9 @@ const searchMealHandler = (e) => {
     .catch(err => console.error(err));
   
 }
-
+// get meal details form server
 const mealDetailsHandler = (idMeal) => {
-  const detailsURL = `${baseURL}lookup.php?i=${idMeal}`
+  const detailsURL = `${baseURL}lookup.php?i=${idMeal}`;
   fetch(detailsURL)
     .then(res => res.json())
     .then(data => createMealDetails(data.meals[0]))
@@ -25,33 +27,30 @@ const mealDetailsHandler = (idMeal) => {
 }
 
 const searchForm = document.getElementById("search__form");
-searchForm.addEventListener("submit", searchMealHandler)
+searchForm.addEventListener("submit", searchMealHandler);
 
+// create meal section
 const createMeals = (meals) => {
-  const mealsElement = document.getElementById("meals")
+  const mealsElement = document.getElementById("meals");
   const mealContainer = document.getElementById("meal-details-container");
   mealContainer.innerHTML = "";
   if(meals === null) {
-    mealsElement.innerHTML = `<h1 style="color: #F06C4E">There is no Meal</h1>`
+    mealsElement.innerHTML = `<h1 style="color: #F06C4E">There is no Meal</h1>`;
   }
   else {
       mealsElement.innerHTML = "";
       meals.forEach(({idMeal, strMealThumb, strMeal}) => {
-      const meal = document.createElement('div');
-      meal.className = "meal";
+      const meal = createElementWithClass("div", "meal");
       meal.addEventListener("click", ()=> {
         mealDetailsHandler(idMeal)
       })
-      const mealMedia = createElementWithClass("div", "meal__media")
-  
-      const mealImg = document.createElement('img');
-      mealImg.className = "meal__img";
+      const mealMedia = createElementWithClass("div", "meal__media");
+      const mealImg = createElementWithClass("img", "meal__img");
       mealImg.src = strMealThumb
-  
-      const mealTitle = document.createElement('h2');
-      mealTitle.className = "meal__title";
+      
+      const mealTitle = createElementWithClass("h2", "meal__title");
       mealTitle.innerText = strMeal;
-  
+      
       mealMedia.appendChild(mealImg)
       meal.appendChild(mealMedia);
       meal.appendChild(mealTitle);
@@ -60,32 +59,23 @@ const createMeals = (meals) => {
     })
   }
 }
-
+// create meal details section
 const createMealDetails = (meal) => {
   const mealContainer = document.getElementById("meal-details-container");
   mealContainer.innerHTML = "";
-  console.log(meal);
-  const mealDetails = document.createElement('div');
-  mealDetails.className = "meal-details"
+  const mealDetails = createElementWithClass("div", "meal-details");
+  const mealMedia = createElementWithClass("div", "meal-details__media");
 
-  const mealMedia = document.createElement('div');
-  mealMedia.className = "meal-details__media";
-
-  const mealImg = document.createElement('img')
-  mealImg.className = "meal-details__img";
+  const mealImg = createElementWithClass("img", "meal-details__img");
   mealImg.src = meal.strMealThumb;
 
-  const mealTitle = document.createElement('h1');
-  mealTitle.className = "meal-details__title";
+  const mealTitle = createElementWithClass("h1", "meal-details__title");
   mealTitle.innerText = meal.strMeal;
 
-  const mealIngredientTitle = document.createElement('h3');
-  mealIngredientTitle.className = "meal-details__ingredient-title";
+  const mealIngredientTitle = createElementWithClass("h3", "meal-details__ingredient-title");
   mealIngredientTitle.innerText = "Ingredient";
 
-  const ingredientList = document.createElement('ul');
-  ingredientList.className = "meal-details__ingredient"
-
+  const ingredientList = createElementWithClass("ul", "meal-details__ingredient");
   const ingredientArr = [];
   for(let i = 1; i <= 20; i++) {
     ingredientArr.push(meal[`strIngredient${i}`])
@@ -98,7 +88,6 @@ const createMealDetails = (meal) => {
       ingredientList.appendChild(ingredientListItem)
     }
   })
-
   mealMedia.appendChild(mealImg);
   mealDetails.appendChild(mealMedia)
   mealDetails.appendChild(mealTitle)
